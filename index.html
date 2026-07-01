@@ -5,25 +5,16 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 60px auto;
+      max-width: 1000px;
+      margin: 50px auto;
       padding: 0 20px;
       line-height: 1.6;
       color: #222;
-    }
-
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      font-size: 20px;
-      color: #555;
+      background: #fafafa;
     }
 
     nav {
-      margin: 30px 0;
+      margin-bottom: 40px;
     }
 
     nav a {
@@ -33,41 +24,144 @@
       font-weight: bold;
     }
 
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .hero img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 16px;
+      background: #ddd;
+    }
+
+    h1 {
+      font-size: 52px;
+      margin: 0;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: #555;
+    }
+
+    .button {
+      display: inline-block;
+      margin-right: 12px;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: #0066cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
     section {
-      margin-top: 40px;
+      margin-top: 45px;
     }
 
     .card {
-      background: #f5f5f5;
-      padding: 20px;
-      border-radius: 12px;
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
       margin-top: 15px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .demo-box {
+      background: #eee;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      color: #555;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      color: #777;
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <h1>BrainX</h1>
-  <p class="subtitle">
-    A brain-inspired AI project connecting perception, memory, emotion,
-    damage response, imagination, and Unity simulation.
-  </p>
 
   <nav>
+    <a href="#about">About</a>
     <a href="#architecture">Architecture</a>
-    <a href="#simulation">Unity Simulation</a>
-    <a href="#emotion">Emotion</a>
+    <a href="#simulation">Simulation</a>
     <a href="#demos">Demos</a>
+    <a href="#contact">Contact</a>
   </nav>
+
+  <div class="hero" id="about">
+    <img src="assets/brainx.png" alt="BrainX project image">
+
+    <div>
+      <h1>BrainX</h1>
+      <p class="subtitle">
+        A brain-inspired AI project connecting perception, memory, emotion,
+        damage response, imagination, and Unity simulation.
+      </p>
+
+      <a class="button" href="https://github.com/vincent2o1" target="_blank">GitHub</a>
+      <a class="button" href="#demos">View Demos</a>
+    </div>
+  </div>
 
   <section id="architecture">
     <h2>Architecture</h2>
-    <div class="card">
-      <p>
-        BrainX uses multiple modules such as visual input, hearing input,
-        ring-tree memory, emotional centers, reflex memory, imagination,
-        and Unity-based motor control.
-      </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Perception</h3>
+        <p>
+          BrainX receives visual and hearing inputs, processes them through
+          specialized modules, and converts them into internal representations.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Memory</h3>
+        <p>
+          The ring-tree memory system stores patterns, compares new inputs,
+          and retrieves related past experiences.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Emotion and Reflex</h3>
+        <p>
+          Emotional centers detect negative states, store recovery patterns,
+          and create reflex-like responses after damage recovery.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -75,30 +169,41 @@
     <h2>Unity Simulation</h2>
     <div class="card">
       <p>
-        The Unity agent receives commands from Python, moves inside a
-        simulation, detects damage, and sends sensor information back to
-        the AI system.
-      </p>
-    </div>
-  </section>
-
-  <section id="emotion">
-    <h2>Emotional Centers</h2>
-    <div class="card">
-      <p>
-        The emotional system detects negative states, stores recovery
-        patterns, and forms reflex-like responses after damage recovery.
+        The Unity agent receives commands from Python, moves inside a simulation,
+        detects damage through sensor values, and sends feedback back to BrainX.
       </p>
     </div>
   </section>
 
   <section id="demos">
     <h2>Demo Videos</h2>
+
+    <div class="grid">
+      <div class="demo-box">
+        Demo Video 1 Coming Soon
+      </div>
+
+      <div class="demo-box">
+        Demo Video 2 Coming Soon
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
     <div class="card">
       <p>
-        Demo videos and screenshots will be added here.
+        GitHub:
+        <a href="https://github.com/vincent2o1" target="_blank">
+          github.com/vincent2o1
+        </a>
       </p>
     </div>
   </section>
+
+  <footer>
+    <p>© 2026 BrainX Project</p>
+  </footer>
+
 </body>
 </html>
