@@ -5,106 +5,93 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 1000px;
-      margin: 50px auto;
-      padding: 0 20px;
-      line-height: 1.6;
+      margin: 0;
+      background: #f6f7fb;
       color: #222;
-      background: #fafafa;
+      line-height: 1.6;
     }
 
-    nav {
-      margin-bottom: 40px;
-    }
-
-    nav a {
-      margin-right: 20px;
-      text-decoration: none;
-      color: #0066cc;
-      font-weight: bold;
-    }
-
-    .hero {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      background: white;
+    .layout {
+      display: grid;
+      grid-template-columns: 20% 55% 25%;
+      gap: 24px;
       padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      max-width: 1400px;
+      margin: auto;
     }
 
-    .hero img {
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
+    .profile, .main, .status {
+      background: white;
       border-radius: 16px;
-      background: #ddd;
+      padding: 24px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
+
+    .profile, .status {
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+    }
+
+    .profile img {
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 16px;
     }
 
     h1 {
-      font-size: 52px;
+      font-size: 42px;
       margin: 0;
     }
 
-    .subtitle {
-      font-size: 20px;
-      color: #555;
+    h2 {
+      margin-top: 0;
     }
 
-    .button {
-      display: inline-block;
-      margin-right: 12px;
-      margin-top: 10px;
-      padding: 10px 16px;
-      background: #0066cc;
-      color: white;
+    a {
+      color: #0066cc;
       text-decoration: none;
-      border-radius: 8px;
       font-weight: bold;
     }
 
-    section {
-      margin-top: 45px;
+    .link-button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      background: #0066cc;
+      color: white;
+      text-align: center;
+      border-radius: 8px;
     }
 
     .card {
-      background: white;
-      padding: 22px;
-      border-radius: 14px;
-      margin-top: 15px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-    }
-
-    .demo-box {
-      background: #eee;
-      padding: 30px;
+      background: #f7f7f7;
+      padding: 18px;
       border-radius: 12px;
-      text-align: center;
-      color: #555;
+      margin-bottom: 18px;
     }
 
-    footer {
-      margin-top: 60px;
-      padding-top: 20px;
-      border-top: 1px solid #ddd;
-      color: #777;
+    .status-entry {
+      border-left: 4px solid #0066cc;
+      padding-left: 12px;
+      margin-bottom: 22px;
+      background: #f7f7f7;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 8px;
     }
 
-    @media (max-width: 700px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
+    .status-entry h4 {
+      margin: 0 0 6px 0;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
       }
 
-      h1 {
-        font-size: 40px;
+      .profile, .status {
+        position: static;
       }
     }
   </style>
@@ -112,98 +99,109 @@
 
 <body>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#architecture">Architecture</a>
-    <a href="#simulation">Simulation</a>
-    <a href="#demos">Demos</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="layout">
 
-  <div class="hero" id="about">
-    <img src="assets/brainx.png" alt="BrainX project image">
+    <aside class="profile">
+      <img src="assets/brainx.jpg" alt="BrainX image">
 
-    <div>
+      <h2>Prakash M</h2>
+      <p>
+        Developer of BrainX, a brain-inspired AI project exploring perception,
+        memory, emotion, damage response, imagination, and simulation.
+      </p>
+
+      <a class="link-button" href="https://github.com/vincent2o1" target="_blank">GitHub</a>
+      <a class="link-button" href="mailto:pksacker28@gmail.com">Email</a>
+    </aside>
+
+    <main class="main">
       <h1>BrainX</h1>
-      <p class="subtitle">
-        A brain-inspired AI project connecting perception, memory, emotion,
-        damage response, imagination, and Unity simulation.
+      <p>
+        BrainX is a brain-inspired AI project that connects perception, memory,
+        emotion, damage response, imagination, and Unity simulation.
       </p>
 
-      <a class="button" href="https://github.com/vincent2o1" target="_blank">GitHub</a>
-      <a class="button" href="#demos">View Demos</a>
-    </div>
+      <section>
+        <h2>Architecture</h2>
+
+        <div class="card">
+          <h3>Perception</h3>
+          <p>
+            BrainX receives visual and hearing inputs and converts them into
+            internal representations.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Memory</h3>
+          <p>
+            The ring-tree memory system stores patterns, compares new inputs,
+            and retrieves related past experiences.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Emotion and Reflex</h3>
+          <p>
+            Emotional centers detect negative states, store recovery patterns,
+            and create reflex-like responses.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Unity Simulation</h2>
+        <div class="card">
+          <p>
+            The Unity agent receives commands from Python, moves inside a
+            simulation, detects damage, and sends feedback back to BrainX.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Demo Videos</h2>
+        <div class="card">
+          <p>Demo videos and screenshots will be added here.</p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="status">
+      <h2>Current Status</h2>
+
+      <div class="status-entry">
+        <h4>2026-07-01</h4>
+        <p>
+          Building the first public BrainX project website using GitHub Pages.
+        </p>
+      </div>
+
+      <div class="status-entry">
+        <h4>Current Work</h4>
+        <p>
+          Improving the emotional centers, damage response, reflex memory,
+          and Unity agent behavior.
+        </p>
+      </div>
+
+      <div class="status-entry">
+        <h4>Current Problem</h4>
+        <p>
+          Reducing CPU computation time and improving JSON loading/saving
+          efficiency.
+        </p>
+      </div>
+
+      <div class="status-entry">
+        <h4>Next Goal</h4>
+        <p>
+          Add demo videos, architecture diagrams, and detailed progress notes.
+        </p>
+      </div>
+    </aside>
+
   </div>
-
-  <section id="architecture">
-    <h2>Architecture</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Perception</h3>
-        <p>
-          BrainX receives visual and hearing inputs, processes them through
-          specialized modules, and converts them into internal representations.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Memory</h3>
-        <p>
-          The ring-tree memory system stores patterns, compares new inputs,
-          and retrieves related past experiences.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Emotion and Reflex</h3>
-        <p>
-          Emotional centers detect negative states, store recovery patterns,
-          and create reflex-like responses after damage recovery.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="simulation">
-    <h2>Unity Simulation</h2>
-    <div class="card">
-      <p>
-        The Unity agent receives commands from Python, moves inside a simulation,
-        detects damage through sensor values, and sends feedback back to BrainX.
-      </p>
-    </div>
-  </section>
-
-  <section id="demos">
-    <h2>Demo Videos</h2>
-
-    <div class="grid">
-      <div class="demo-box">
-        Demo Video 1 Coming Soon
-      </div>
-
-      <div class="demo-box">
-        Demo Video 2 Coming Soon
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="card">
-      <p>
-        GitHub:
-        <a href="https://github.com/vincent2o1" target="_blank">
-          github.com/vincent2o1
-        </a>
-      </p>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2026 BrainX Project</p>
-  </footer>
 
 </body>
 </html>
