@@ -6,8 +6,8 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f6f7fb;
-      color: #222;
+      background: #000;
+      color: #eaeaea;
       line-height: 1.6;
     }
 
@@ -21,10 +21,10 @@
     }
 
     .profile, .main, .status {
-      background: white;
+      background: #111;
       border-radius: 16px;
       padding: 24px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 18px rgba(255,255,255,0.08);
     }
 
     .profile, .status {
@@ -34,22 +34,26 @@
     }
 
     .profile img {
-      width: 100%;
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 16px auto;
       border-radius: 16px;
-      margin-bottom: 16px;
     }
 
     h1 {
       font-size: 42px;
       margin: 0;
+      color: white;
     }
 
-    h2 {
-      margin-top: 0;
+    h2, h3, h4 {
+      color: white;
     }
 
     a {
-      color: #0066cc;
+      color: #4da3ff;
       text-decoration: none;
       font-weight: bold;
     }
@@ -64,8 +68,40 @@
       border-radius: 8px;
     }
 
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin: 22px 0;
+      border-bottom: 1px solid #333;
+      padding-bottom: 12px;
+    }
+
+    .tabs button {
+      background: #1c1c1c;
+      color: white;
+      border: 1px solid #333;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tabs button:hover,
+    .tabs button.active {
+      background: #0066cc;
+      border-color: #0066cc;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
     .card {
-      background: #f7f7f7;
+      background: #1a1a1a;
       padding: 18px;
       border-radius: 12px;
       margin-bottom: 18px;
@@ -75,7 +111,7 @@
       border-left: 4px solid #0066cc;
       padding-left: 12px;
       margin-bottom: 22px;
-      background: #f7f7f7;
+      background: #1a1a1a;
       padding-top: 10px;
       padding-bottom: 10px;
       border-radius: 8px;
@@ -92,6 +128,10 @@
 
       .profile, .status {
         position: static;
+      }
+
+      .tabs {
+        flex-direction: column;
       }
     }
   </style>
@@ -111,17 +151,45 @@
       </p>
 
       <a class="link-button" href="https://github.com/vincent2o1" target="_blank">GitHub</a>
-      <a class="link-button" href="mailto:pksacker28@gmail.com">Email</a>
+      <a class="link-button" href="mailto:your-email@example.com">Email</a>
     </aside>
 
     <main class="main">
       <h1>BrainX</h1>
-      <p>
-        BrainX is a brain-inspired AI project that connects perception, memory,
-        emotion, damage response, imagination, and Unity simulation.
-      </p>
 
-      <section>
+      <div class="tabs">
+        <button class="tab-button active" onclick="openTab('summary', this)">Summary</button>
+        <button class="tab-button" onclick="openTab('architecture', this)">Architecture</button>
+        <button class="tab-button" onclick="openTab('theory', this)">Theory</button>
+      </div>
+
+      <section id="summary" class="tab-content active">
+        <h2>Summary</h2>
+
+        <div class="card">
+          <p>
+            BrainX is a brain-inspired AI project that connects perception,
+            memory, emotion, damage response, imagination, and Unity simulation.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Unity Simulation</h3>
+          <p>
+            The Unity agent receives commands from Python, moves inside a
+            simulation, detects damage, and sends feedback back to BrainX.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Demo Videos</h3>
+          <p>
+            Demo videos and screenshots will be added here.
+          </p>
+        </div>
+      </section>
+
+      <section id="architecture" class="tab-content">
         <h2>Architecture</h2>
 
         <div class="card">
@@ -149,20 +217,31 @@
         </div>
       </section>
 
-      <section>
-        <h2>Unity Simulation</h2>
+      <section id="theory" class="tab-content">
+        <h2>Theory</h2>
+
         <div class="card">
+          <h3>Brain-Inspired Intelligence</h3>
           <p>
-            The Unity agent receives commands from Python, moves inside a
-            simulation, detects damage, and sends feedback back to BrainX.
+            BrainX is based on the idea that intelligence can emerge from the
+            interaction of perception, memory, emotional signals, and action.
           </p>
         </div>
-      </section>
 
-      <section>
-        <h2>Demo Videos</h2>
         <div class="card">
-          <p>Demo videos and screenshots will be added here.</p>
+          <h3>Emotion as Control Signal</h3>
+          <p>
+            Negative and positive states are treated as signals that help the
+            system learn danger, recovery, and useful behavior patterns.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Reflex Learning</h3>
+          <p>
+            When the system experiences damage and later recovers, it stores the
+            recovery sequence as a reflex-like response for future situations.
+          </p>
         </div>
       </section>
     </main>
@@ -202,6 +281,24 @@
     </aside>
 
   </div>
+
+  <script>
+    function openTab(tabName, button) {
+      const contents = document.querySelectorAll(".tab-content");
+      const buttons = document.querySelectorAll(".tab-button");
+
+      contents.forEach(content => {
+        content.classList.remove("active");
+      });
+
+      buttons.forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      document.getElementById(tabName).classList.add("active");
+      button.classList.add("active");
+    }
+  </script>
 
 </body>
 </html>
