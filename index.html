@@ -106,21 +106,32 @@
       border-radius: 12px;
       margin-bottom: 18px;
     }
-
+    
     .status-entry {
-      border-left: 4px solid #0066cc;
-      padding-left: 12px;
-      margin-bottom: 22px;
-      background: #1a1a1a;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      border-radius: 8px;
+      border-left: none;
+      border-bottom: 1px solid #333;
+      padding: 0 0 14px 0;
+      margin-bottom: 14px;
+      background: transparent;
     }
-
+    
+    .status-entry:last-child {
+      border-bottom: none;
+    }
+    
     .status-entry h4 {
-      margin: 0 0 6px 0;
+      margin: 0 0 4px 0;
+      font-size: 14px;   /* slightly smaller */
+      color: #8ab4ff;
     }
-
+    
+    .status-entry p {
+      margin: 0;
+      font-size: 13px;   /* reduced comment text size */
+      color: #cfcfcf;
+      line-height: 1.5;
+    }
+        
     @media (max-width: 900px) {
       .layout {
         grid-template-columns: 1fr;
@@ -146,11 +157,13 @@
 
       <h2>Vincent</h2>
       <p>
-        Developer of BrainX
+        BrainX theory - CrX architecture
+        "Intelligence acts as suggestion giver,
+         Emotion acts acts as a decision maker"
       </p>
 
       <a class="link-button" href="https://github.com/vincent2o1" target="_blank">GitHub</a>
-      <a class="link-button" href="mailto:your-email@example.com">Email</a>
+      <a class="link-button" href="mailto:pksacker28@gmail.com">Email</a>
     </aside>
 
     <main class="main">
